@@ -17,3 +17,8 @@ I have worked with companies such as ATOS and A.M.A. and currently I'm working i
 I really love to code!
     """
     st.info(content)
+
+content2 = """
+Below you can find some of the apps I have build in Python. Feel free to contact me!
+"""
+st.subheader(content2)
