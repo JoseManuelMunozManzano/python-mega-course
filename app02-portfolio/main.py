@@ -1,5 +1,6 @@
 # streamlit run main.py
 import streamlit as st
+import pandas
 
 st.set_page_config(layout="wide")
 
@@ -21,4 +22,15 @@ I really love to code!
 content2 = """
 Below you can find some of the apps I have build in Python. Feel free to contact me!
 """
-st.subheader(content2)
+st.text(content2)
+
+col3, col4 = st.columns(2)
+
+df = pandas.read_csv("data.csv", sep=";")
+with col3:
+    for index, row in df[:10].iterrows():
+        st.header(row["title"])
+
+with col4:
+    for index, row in df[10:].iterrows():
+        st.header(row["title"])
