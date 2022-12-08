@@ -2,7 +2,7 @@ import smtplib, ssl
 import os
 
 
-def send_email(raw_message):
+def send_email(subject, message):
     host = "smtp-mail.outlook.com"
     port = 587
 
@@ -12,14 +12,14 @@ def send_email(raw_message):
     receiver = "neil_mercury@yahoo.es"
     context = ssl.create_default_context()
 
-    message = f"""\
-Subject: News
+    final_message = f"""\
+{subject}
 
 From: {username}
-{raw_message}
+{message}
 """
 
     with smtplib.SMTP(host, port) as server:
         server.starttls(context=context)
         server.login(username, password)
-        server.sendmail(username, receiver, message)
+        server.sendmail(username, receiver, final_message)
